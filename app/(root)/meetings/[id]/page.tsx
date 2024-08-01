@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Meeting = ({
+const Meetings = ({
     params
 }: { params: { id : string } }) => {
   return (
@@ -13,4 +13,4 @@ const Meeting = ({
   )
 }
 
-export default Meeting
+export default Meetings
