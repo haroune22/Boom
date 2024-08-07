@@ -25,7 +25,9 @@ import EndCallButton from './EndCallButton';
 import Loader from './Loader';
 
 
+
 type CallLayoutType = 'grid' | 'speaker-left' | 'speaker-right';
+
 
 const MeetingRoom = () => {
   
