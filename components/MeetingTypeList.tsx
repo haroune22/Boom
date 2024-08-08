@@ -124,6 +124,9 @@ const MeetingTypeList = () => {
           </label>
           <Textarea 
             className='border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0'
+            onChange={(e) =>
+              setValues({ ...values, description: e.target.value })
+            }
           />
         </div>
         <div className="flex flex-col w-full gap-2.5">
