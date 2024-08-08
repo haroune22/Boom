@@ -12,6 +12,7 @@ import { useToast } from './ui/use-toast';
 import ReactDatePicker from 'react-datepicker';
 import { Textarea } from './ui/textarea';
 import Loader from './Loader';
+import { Input } from './ui/input';
 
 const initialValues = {
   dateTime: new Date(),
@@ -91,13 +92,6 @@ const MeetingTypeList = () => {
         handleClick={() => setMeetingState('isInstantMeeting')}
       />
       <HomeCard
-        img="/icons/join-meeting.svg"
-        title="Join Meeting"
-        description="via invitation link"
-        className="bg-blue-1"
-        handleClick={() => setMeetingState('isJoiningMeeting')}
-      />
-      <HomeCard
         img="/icons/schedule.svg"
         title="Schedule Meeting"
         description="Plan your meeting"
@@ -110,6 +104,13 @@ const MeetingTypeList = () => {
         description="Meeting Recordings"
         className="bg-yellow-1"
         handleClick={() => router.push('/recordings')}
+      />
+      <HomeCard
+        img="/icons/join-meeting.svg"
+        title="Join Meeting"
+        description="via invitation link"
+        className="bg-blue-1"
+        handleClick={() => setMeetingState('isJoiningMeeting')}
       />
       {!callDetails ? (
         <MeetingModal
@@ -161,6 +162,20 @@ const MeetingTypeList = () => {
         />
 
       )}
+      <MeetingModal
+        isOpen={meetingState === 'isJoiningMeeting'}
+        onClose={() => setMeetingState(undefined)}
+        title="Type the link here"
+        className="text-center"
+        buttonText="Join Meeting"
+        handleClick={() => router.push(values.link)}
+      >
+        <Input
+          placeholder="Meeting link"
+          onChange={(e) => setValues({ ...values, link: e.target.value })}
+          className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+        />
+      </MeetingModal>
       <MeetingModal
         isOpen={meetingState === "isInstantMeeting"}
         onClose={() =>setMeetingState(undefined)}
